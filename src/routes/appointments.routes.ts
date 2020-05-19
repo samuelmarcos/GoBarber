@@ -7,6 +7,10 @@ import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRouter = Router();
 
+import ensureAthenticated from '../middlewares/ensureAuthenticated';
+
+appointmentsRouter.use(ensureAthenticated);
+
 appointmentsRouter.get('/', async (req, res) => {
     const appointmentRepository = getCustomRepository(AppointmentRepository);
 
